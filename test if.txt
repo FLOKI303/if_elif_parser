@@ -1,0 +1,11 @@
+if : mammia else : hahah
+if x: code code2 else :
+if x: code code2 else
+if : code elif x: code2
+if x: code code2 elif x: else : code
+if x: elif x: code
+if x : code : elif: code2
+if x : code : elif:
+if x : code elif x: code if x: else : code2
+if x: code elif x: elif x : code2
+
