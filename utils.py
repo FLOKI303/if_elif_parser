@@ -1,4 +1,5 @@
 import ast
+from asyncio.windows_events import NULL
 
 
 def begin():
@@ -17,6 +18,7 @@ def verify_syntax(code):
 
 def get_condition(string_list):
     if len(string_list) == 0:
+        print("Empty Condition")
         exit(0)
     else:
         s = 0
@@ -38,7 +40,8 @@ def get_condition(string_list):
 
 def get_body(string_list):
     if len(string_list) == 0:
-        return 0
+        print("Empty Body")
+        exit(0)
     else:
         s = 0
         string = ""
@@ -106,14 +109,15 @@ def parse_4(string_list):
 
 
 def parse_5(string_list):
-    if len(string_list) == 0 or (not string_list[0].endswith(':') and not string_list[1] == ':'):
-        print('Need : after else')
-    else:
+    if len(string_list) != 0 and (string_list[0].endswith(':') or (len(string_list) > 1 and string_list[1].endswith(':'))):
         s = 0
         for s in range(len(string_list)):
             if string_list[s].endswith(':') or string_list[s] == ':':
                 break
         parse_6(string_list[s + 1:])
+    else:
+        print('Need : after else')
+        exit(0)
 
 
 def parse_6(string_list):
