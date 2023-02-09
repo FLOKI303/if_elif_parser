@@ -17,7 +17,7 @@ def verify_syntax(code):
 
 def get_condition(string_list):
     if len(string_list) == 0:
-        return 0
+        exit(0)
     else:
         s = 0
         string = ''
@@ -30,7 +30,7 @@ def get_condition(string_list):
         if not string_list[s].endswith(':'):
             print('Need : after if')
             exit(0)
-    if string == '':
+    if string == '' or not string:
         print('Empty condition')
         exit(0)
     return string
@@ -101,12 +101,12 @@ def parse_3(string_list):
 def parse_4(string_list):
     if string_list[0].startswith('else'):
         parse_5(string_list[0:])
-    elif string_list[0] == 'elif':
+    elif string_list[0] == 'elif' or string_list[0] == 'elif:':
         parse_7(string_list[1:])
 
 
 def parse_5(string_list):
-    if len(string_list) == 0 or not string_list[0].endswith(':'):
+    if len(string_list) == 0 or (not string_list[0].endswith(':') and not string_list[1] == ':'):
         print('Need : after else')
     else:
         s = 0
@@ -146,7 +146,7 @@ def parse_7(string_list):
 
 
 def parse_8(string_list):
-    if len(string_list) == 0 or string_list[0].startswith('else'):
+    if len(string_list) == 0 or string_list[0].startswith('else') or string_list[0].endswith(':'):
         print("Empty body of elif")
         exit(0)
     else:
