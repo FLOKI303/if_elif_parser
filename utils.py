@@ -117,6 +117,8 @@ def parse_3(string_list):
 def parse_4(string_list):
     if string_list[0] == 'else':
         parse_5(string_list[1:])
+    elif string_list[0] == "else:":
+        parse_5_1(string_list[1:])
     elif string_list[0] == 'elif':
         parse_7(string_list[1:])
     elif string_list[0].startswith('elif') and not string_list[0].endswith('elif'):
@@ -136,6 +138,14 @@ def parse_5(string_list):
     else:
         print("Can't put a condition after else")
         exit(0)
+
+
+def parse_5_1(string_list):
+    if len(string_list) == 0:
+        print("Empty body of else")
+        exit(0)
+    else:
+        parse_6(string_list[0:])
 
 
 def parse_6(string_list):
